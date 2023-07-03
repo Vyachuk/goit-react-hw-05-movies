@@ -1,3 +1,3 @@
 export const App = () => {
-  return <div>New template</div>;
+  return <div>New template with my</div>;
 };
