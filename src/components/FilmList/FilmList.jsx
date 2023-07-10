@@ -1,11 +1,14 @@
 import { HomeItem } from 'pages/Home.styled';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const FilmList = ({ id, title }) => {
+  const location = useLocation();
   return (
     <HomeItem>
-      <Link to={`/movies/${id.toString()}`}>{title}</Link>
+      <Link to={`/movies/${id.toString()}`} state={{ from: location }}>
+        {title}
+      </Link>
     </HomeItem>
   );
 };

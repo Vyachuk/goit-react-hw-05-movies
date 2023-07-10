@@ -20,15 +20,13 @@ const Movies = () => {
   };
   return (
     <div>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
-        <button type="submit" onClick={handleSubmit}>
-          Search
-        </button>
+        <button type="submit">Search</button>
       </form>
       <HomeList>
         {films.map(({ id, title }) => (

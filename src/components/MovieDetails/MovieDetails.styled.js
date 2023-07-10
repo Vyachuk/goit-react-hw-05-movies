@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FilmInfoWrapper = styled.div`
@@ -30,7 +31,9 @@ export const AdditionalInfo = styled.p`
   margin-bottom: 20px;
 `;
 
-export const ButtonBack = styled.button`
+export const ButtonBack = styled(Link)`
+  display: block;
+  max-width: 80px;
   margin-bottom: 10px;
   border-radius: 8px;
   padding: 3px 12px;

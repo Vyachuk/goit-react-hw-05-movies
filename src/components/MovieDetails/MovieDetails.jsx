@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchFilmById } from 'service/fetchApi';
 import {
   AdditionalInfo,
@@ -12,7 +12,7 @@ import {
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
   const [filmData, setFilmData] = useState({});
   useEffect(() => {
     fetchFilmById(movieId).then(data => {
@@ -30,7 +30,7 @@ const MovieDetails = () => {
   const { photo, title, votes, overview, genres } = filmData;
   return (
     <>
-      <ButtonBack onClick={() => navigate(-1)}>&#8656; Go back</ButtonBack>
+      <ButtonBack to={location.state?.from || '/'}>&#8656; Go back</ButtonBack>
       <FilmInfoWrapper>
         <FilmBanner src={photo} alt={title} />
         <div>
@@ -50,10 +50,14 @@ const MovieDetails = () => {
       <AdditionalInfo>Additional information</AdditionalInfo>
       <GenresList>
         <GenresItem>
-          <Link to="cast">Cast</Link>
+          <Link state={location.state} to="cast">
+            Cast
+          </Link>
         </GenresItem>
         <GenresItem>
-          <Link to="reviews">Reviews</Link>
+          <Link state={location.state} to="reviews">
+            Reviews
+          </Link>
         </GenresItem>
       </GenresList>
       <hr />

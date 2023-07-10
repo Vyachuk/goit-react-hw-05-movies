@@ -6,7 +6,6 @@ import { ReviewContent, ReviewList } from './Reviews.styled';
 const Reviews = () => {
   const { movieId } = useParams();
   const [review, setReview] = useState([]);
-  console.log(review);
   useEffect(() => {
     fetchFilmReview(movieId).then(data => setReview(data.results));
   }, [movieId]);
